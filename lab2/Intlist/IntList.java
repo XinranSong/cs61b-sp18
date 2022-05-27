@@ -82,7 +82,15 @@ public class IntList {
 
     public static IntList dcatenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+        if (A == null) {
+            return B;
+        }
+        IntList chA = A; // chA is used to find the IntList in A that the rest of which is null
+        while (chA.rest != null) {
+            chA = chA.rest;
+        }
+        chA.rest = B; // assign B to chA.rest, by Golden Rule of Equals, the corresponding part in A is assigned with B
+        return A;
     }
 
     /**
@@ -91,7 +99,19 @@ public class IntList {
      */
     public static IntList catenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+        if (A == null) {
+            return B;
+        }
+        IntList ptrA = A;
+        IntList Res = new IntList(0, null); // stores the result
+        IntList catA = Res;
+        while (ptrA != null) {
+            catA.rest = new IntList(ptrA.first, null);
+            catA = catA.rest;
+            ptrA = ptrA.rest;
+        }
+        catA.rest = B;
+        return Res.rest;
     }
 
 
